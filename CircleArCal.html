@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    input[type="number"] {
+      padding: 8px;
+      width: 100%;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Circle Calculator</h1>
+<p>Enter the radius of the circle:</p>
+
+<input type="number" id="radius" placeholder="Enter radius" min="0" required>
+
+<button onclick="calculateCircle()">Calculate</button>
+
+<div class="result" id="result"></div>
+
+<script>
+  function calculateCircle() {
+    const radius = parseFloat(document.getElementById("radius").value);
+
+    if (isNaN(radius) || radius <= 0) {
+      document.getElementById("result").innerHTML = "Please enter a valid radius.";
+      return;
+    }
+
+    // Calculate area and circumference
+    const area = Math.PI * Math.pow(radius, 2);
+    const circumference = 2 * Math.PI * radius;
+
+    // Display the results
+    document.getElementById("result").innerHTML = `
+      <p>Area: ${area.toFixed(2)} square units</p>
+      <p>Circumference: ${circumference.toFixed(2)} units</p>
+    `;
+  }
+</script>
+
+</body>
+</html>
